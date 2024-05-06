@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GKeys | Subscription</title>
+    <link rel="stylesheet" href="css/VGproduct.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="css/hpcss.css">
+    <script src="Js/script.js" defer></script>
+    <script src="Js/cart.js" defer></script>
+    <script>
+        function addToCart(name, price) {
+            const quantitySelect = document.getElementById('quantitySelect');
+            const quantity = parseInt(quantitySelect.value);
+
+            if (quantity && quantity > 0) {
+                const item = {
+                    name: name,
+                    price: price,
+                    quantity: quantity,
+                    imgSrc: `Images/Subs/S3.png`, // Adjust the path as needed
+                    // Add other details as needed
+                };
+
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                const existingItemIndex = cart.findIndex((cartItem) => cartItem.name === item.name);
+
+                if (existingItemIndex !== -1) {
+                    cart[existingItemIndex].quantity += quantity;
+                } else {
+                    cart.push(item);
+                }
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Update the cart icon in the navigation bar
+                updateCartIcon();
+
+                alert('Item added to cart!');
+            } else {
+                alert('Please select a valid quantity.');
+            }
+        }
+
+        function updateCartIcon() {
+            const cartLink = document.getElementById('cart-link');
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+
+            // Update the cart icon with the total number of items
+            cartLink.innerHTML = `<i class="fa-solid fa-cart-shopping fa-2x" style="color: #a75ce9;"></i> (${totalItems})`;
+        }
+    </script>
+</head>
+
+<body>
+    <header class="header-top">
+        <ul>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Join us</a></li>
+        </ul>
+
+        <select class="money">
+            <option><a href="#">KSA SAR</a></option>
+            <option><a href="#">USA $</a></option>
+            <option><a href="#">EUR €</a></option>
+        </select>
+
+        <ul>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#bottom" style="scroll-behavior: smooth;">Contact Us</a></li>
+        </ul>
+    </header>
+
+
+    <section id="header">
+        <a href="index.html"><img src="Images/GKlogo.png" class="logo"></a>
+        <div class="navbar">
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="allGames.html">All Games</a></li>
+                <li><a class="active" href="Subs.html">Subscriptions</a></li>
+                <li><a href="Cart.html" id="cart-link"><i class="ri-shopping-cart-line"></i>Cart</a></li>
+                <li><a href="login.html"><i class="ri-account-circle-line"></i></a></li>
+            </ul>
+        </div>
+    </section>
+
+    <main class="product-page">
+        <section class="product-details">
+            <div class="product-images">
+                <img src="Images/Subs/S3.png" alt="Subscription Image Placeholder">
+            </div>
+            <div class="product-info">
+                <h1 id="subscription-name">Spotify Premium</h1>
+                <i class="fa-solid fa-star" style="color: #B197FC;"></i>
+                <i class="fa-solid fa-star" style="color: #B197FC;"></i>
+                <i class="fa-solid fa-star" style="color: #B197FC;"></i>
+                <i class="fa-solid fa-star" style="color: #B197FC;"></i>
+                <i class="fa-solid fa-star" style="color: #B197FC;"></i>
+                (500)
+                <p class="price" id="subscription-price">70 SAR</p>
+                <p class="description" id="subscription-description">Subscription description goes here.</p>
+                <label for="quantitySelect">Quantity (Months):</label>
+                <input type="number" id="quantitySelect" value="1" min="1">
+                <button onclick="addToCart('Spotify Premium', 70.00)">Add to Cart</button>
+                <!-- System Requirements section -->
+                <section class="system-requirements">
+                    <h2>System Requirements</h2>
+                    <ul>
+                        <li><strong>Operating System:</strong> Windows 10, macOS 10.14 or later</li>
+                        <li><strong>Processor:</strong> Intel Core i5 or equivalent</li>
+                        <li><strong>Memory:</strong> 8GB RAM</li>
+                        <li><strong>Graphics:</strong> NVIDIA GeForce GTX 1050 or equivalent</li>
+                        <li><strong>Storage:</strong> 256GB SSD</li>
+                        <li><strong>Web Browser:</strong> Google Chrome, Mozilla Firefox, Safari</li>
+                        <!-- Add more requirements as needed -->
+                    </ul>
+                </section>
+            </div>
+        </section>
+
+
+    </main>
+
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="footer-col-2">
+                    <h3><strong>About Us</strong></h3>
+                    <ul>
+                        <li><a href="index.html">Home</li></a>
+                        <li><a href="#">Blog</li></a>
+                        <li><a href="#">Terms</li></a>
+                    </ul>
+                </div>
+                <div class="footer-col-3">
+                    <h3><strong>Useful Links</strong></h3>
+                    <ul>
+                        <li><a href="Subs.html">Subscriptions</li></a>
+                        <li><a href="allGames.html">All Games</li></a>
+                        <li><a href="#">Coupons</li></a>
+                        <li><a href="#">Terms</li></a>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3><strong>Follow Us</strong></h3>
+                    <ul>
+                    <li><a href="#">Facebook</li></a>
+                    <li><a href="#">Instagram</li></a>
+                    <li><a href="#">Twitter(X)</li></a>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <a><h3 id="bottom"><strong>Contact Us</strong></h3></a>
+                    <p><strong>Email:</strong> GKeys@gmail.com</p>
+                    <p><strong>Phone:</strong> +966 5676556953</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <strong><p>&copy; 2024 GKeys. All rights reserved.</p></strong>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/hpcss.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-size: 16px;
+            font-family: 'Work Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+
+        #checkout-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: #f8f8f8;
+            padding: 20px;
+        }
+
+        #checkout-form h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        #checkout-form form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #checkout-form label {
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        #checkout-form input,
+        #checkout-form select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        #cart-summary {
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #cart-summary h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        #cart-summary ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #cart-summary li {
+            background-color: #f8f8f8;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 8px;
+            font-size: 1.3em;
+        }
+
+        #cart-summary li img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 10px;
+        }
+
+        #cart-summary li span {
+            flex: 1;
+            text-align: left;
+        }
+
+        #total {
+            font-size: 2.0em;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #cart-summary {
+        background-color: white;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin: 0 auto; /* Add this line to center the cart summary */
+    }
+
+    #checkout-form input,
+#checkout-form select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    background-color: #ffffff; /* Add your preferred background color here */
+}
+
+    </style>
+</head>
+
+<body>
+
+    <header class="header-top">
+        <ul>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Join us</a></li>
+        </ul>
+
+        <select class="money">
+            <option><a href="#">KSA SAR</a></option>
+            <option><a href="#">USA $</a></option>
+            <option><a href="#">EUR €</a></option>
+        </select>
+
+        <ul>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#bottom" style="scroll-behavior: smooth;">Contact Us</a></li>
+        </ul>
+    </header>
+
+
+    <section id="header">
+        <a href="index.html"><img src="Images/GKlogo.png" class="logo"></a>
+        <div class="navbar">
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="allGames.html">All Games</a></li>
+                <li><a href="Subs.html">Subscriptions</a></li>
+                <li><a class="active" href="Cart.html"><i class="ri-shopping-cart-line"></i>Cart</a></li>
+                <li><a href="login.html"><i class="ri-account-circle-line"></i></a></li>
+            </ul>
+        </div>
+    </section>
+    
+        
+        <style>
+            .navbar-nav .nav-link {
+                margin-right: 15px; /* Adjust this value as needed */
+            }
+            .navbar-nav li {
+        list-style-type: none;
+    }
+    
+        </style>
+
+    <section id="cart-summary" class="section-p1">
+        <h2>Cart Summary</h2>
+        <ul id="cart-summary-list"></ul>
+        <div id="total">Total: SAR 0.00</div>
+    </section>
+
+    <section id="checkout-form" class="section-p1">
+        <h1>Checkout</h1>
+        <form id="checkout">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
+
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+
+            <label for="country">Country:</label>
+            <select id="country" name="country" required>
+                <option value="" disabled selected>Select your country</option>
+                <option value="SA">Saudi Arabia</option>
+                <option value="kuwait">kuwait</option>
+                <option value="kuwait">USA</option>
+                <option value="kuwait">Europe</option>
+                <!-- Add more countries as needed -->
+            </select>
+
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" id="cardNumber" name="cardNumber" required>
+
+            <label for="expiryDate">Expiry Date:</label>
+            <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" required>
+
+            <a href="ThankYou.html"><button type="button" onclick="submitForm()">Buy</button></a>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+
+                    <div class="footer-col-2">
+                        <h3><strong>About Us</strong></h3>
+                        <ul>
+                            <li><a href="index.html">Home</li></a>
+                            <li><a href="#">Blog</li></a>
+                            <li><a href="#">Terms</li></a>
+                        </ul>
+                    </div>
+                    <div class="footer-col-3">
+                        <h3><strong>Useful Links</strong></h3>
+                        <ul>
+                            <li><a href="Subs.html">Subscriptions</li></a>
+                            <li><a href="allGames.html">All Games</li></a>
+                            <li><a href="#">Coupons</li></a>
+                            <li><a href="#">Terms</li></a>
+                        </ul>
+                    </div>
+                    <div class="footer-col-4">
+                        <h3><strong>Follow Us</strong></h3>
+                        <ul>
+                        <li><a href="#">Facebook</li></a>
+                        <li><a href="#">Instagram</li></a>
+                        <li><a href="#">Twitter(X)</li></a>
+                        </ul>
+                    </div>
+                    <div class="footer-col-4">
+                        <a><h3 id="bottom"><strong>Contact Us</strong></h3></a>
+                        <p><strong>Email:</strong> GKeys@gmail.com</p>
+                        <p><strong>Phone:</strong> +966 5676556953</p>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <strong><p>&copy; 2024 GKeys. All rights reserved.</p></strong>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            displayCartSummary();
+        });
+
+        function displayCartSummary() {
+            const cartSummaryList = document.getElementById('cart-summary-list');
+            const totalContainer = document.getElementById('total');
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            cartSummaryList.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartSummaryList.innerHTML = '<p>Your cart is empty.</p>';
+                return;
+            }
+
+            let total = 0;
+
+            cart.forEach((item) => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <img src="${item.imgSrc}" alt="${item.name}">
+                    <span>${item.name}</span>
+                    <span>Quantity: ${item.quantity}</span>
+                    <span>Price: $${(item.price * item.quantity).toFixed(2)}</span>
+                `;
+                cartSummaryList.appendChild(listItem);
+
+                total += item.price * item.quantity;
+            });
+
+            totalContainer.textContent = `Total: $${total.toFixed(2)}`;
+        }
+
+        function submitForm() {
+            // Add your form submission logic here
+            alert('Form submitted!');
+        }
+    </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        displayCartSummary();
+    });
+
+    function displayCartSummary() {
+        // ... (previous code) ...
+    }
+
+    function submitForm() {
+        // Clear the cart
+        const cart = [];
+        localStorage.setItem('cart', JSON.stringify(cart));
+        
+        // Update the cart summary display
+        displayCartSummary();
+
+        // Show an alert or redirect to a thank you page
+        alert('Thank you for your purchase! Your cart has been cleared.');
+    }
+    function displayCartSummary() {
+    const cartSummaryList = document.getElementById('cart-summary-list');
+    const totalContainer = document.getElementById('total');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    cartSummaryList.innerHTML = '';
+
+    if (cart.length === 0) {
+        cartSummaryList.innerHTML = '<p>Your cart is empty.</p>';
+        return;
+    }
+
+    let total = 0;
+
+    cart.forEach((item) => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+            <img src="${item.imgSrc}" alt="${item.name}">
+            <span>${item.name}</span>
+            <span>Quantity: ${item.quantity}</span>
+            <span>Price: SAR${(item.price * item.quantity).toFixed(2)}</span>
+        `;
+        cartSummaryList.appendChild(listItem);
+
+        total += item.price * item.quantity;
+    });
+
+    totalContainer.textContent = `Total: SAR${total.toFixed(2)}`;
+}
+
+</script>
+
+</body>
+
+</html
